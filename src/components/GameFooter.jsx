@@ -1,6 +1,6 @@
 import React from 'react';
+import logoFetec from '../src/logo-fetec.png'; // ajuste o caminho conforme necessário
 
-// Componente de rodapé com controles e área para logos
 export default function GameFooter() {
   return (
     <div style={{
@@ -77,86 +77,28 @@ export default function GameFooter() {
           ))}
         </div>
       </div>
-      
-      {/* Seção de Logos */}
+
+      {/* Única Logo Centralizada */}
       <div style={{
+        width: '80px',
+        height: '40px',
         display: 'flex',
-        gap: '30px',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#000',
+        borderRadius: '8px',
+        border: '1px solid rgba(255, 215, 0, 0.3)'
       }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
-          <h4 style={{
-            color: '#FFD700',
-            fontSize: '12px',
-            fontWeight: 'bold',
-            margin: 0,
-            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-          }}>
-            Realização
-          </h4>
-          <div style={{
-            width: '80px',
-            height: '40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '8px',
-            border: '1px solid rgba(255, 215, 0, 0.3)'
-          }}>
-            <div style={{
-              color: '#999',
-              fontSize: '10px',
-              textAlign: 'center',
-              padding: '5px'
-            }}>
-              Logo<br/>Realização
-            </div>
-          </div>
-        </div>
-        
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
-          <h4 style={{
-            color: '#FFD700',
-            fontSize: '12px',
-            fontWeight: 'bold',
-            margin: 0,
-            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-          }}>
-            Desenvolvimento
-          </h4>
-          <div style={{
-            width: '80px',
-            height: '40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '8px',
-            border: '1px solid rgba(255, 215, 0, 0.3)'
-          }}>
-            <div style={{
-              color: '#999',
-              fontSize: '10px',
-              textAlign: 'center',
-              padding: '5px'
-            }}>
-              Logo<br/>Desenvolvimento
-            </div>
-          </div>
-        </div>
+        <img
+          src={logoFetec}
+          alt="Logo FETEC"
+          style={{
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain'
+          }}
+        />
       </div>
     </div>
   );
 }
-
