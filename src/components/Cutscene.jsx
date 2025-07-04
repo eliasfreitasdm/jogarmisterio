@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button.jsx';
 import { ChevronRight } from 'lucide-react';
 
 // Componente para cutscenes animadas
@@ -67,7 +66,7 @@ export default function Cutscene({
           zIndex: 1000,
         }}
       >
-        <Button
+        <button
           variant="secondary"
           size="sm"
           onClick={handleNextScene}
@@ -80,15 +79,15 @@ export default function Cutscene({
           ) : (
             'Concluir'
           )}
-        </Button>
+        </button>
         
-        <Button
+        <button
           variant="outline"
           size="sm"
           onClick={handleSkip}
         >
           Pular
-        </Button>
+        </button>
       </div>
     );
   };

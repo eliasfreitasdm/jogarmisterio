@@ -1,5 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
+// Importar assets dos personagens
+import anaImg from '../assets/personagens/ana-personagem.png';
+import lucasImg from '../assets/personagens/lucas-personagem.png';
+import sofiaImg from '../assets/personagens/sofia-personagem.png';
+import zeImg from '../assets/personagens/ze-papagaio.png';
+
 // Constantes de física
 const GRAVITY = 0.6;
 const JUMP_FORCE = -15;
@@ -35,15 +41,37 @@ export default function Player({
     q: false
   });
   
-  // Carregar imagem do personagem
-  const characterImage = character === 'ana' ? '/src/assets/personagens/ana-personagem.png' :
-                         character === 'lucas' ? '/src/assets/personagens/lucas-personagem.png' :
-                         character === 'sofia' ? '/src/assets/personagens/sofia-personagem.png' :
-                         '/src/assets/personagens/ze-papagaio.png';
+  // Carregar imagem do personagem com caminho correto
+  const getCharacterImage = (character) => {
+    try {
+      switch(character) {
+        case 'ana':
+          return anaImg;
+        case 'lucas':
+          return lucasImg;
+        case 'sofia':
+          return sofiaImg;
+        case 'ze':
+          return zeImg;
+        default:
+          return anaImg;
+      }
+    } catch (error) {
+      console.error('Erro ao carregar imagem do personagem:', error);
+      return null;
+    }
+  };
+  
+  const characterImage = getCharacterImage(character);
   
   // Configurar event listeners para controles
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // Prevenir comportamento padrão das teclas
+      if (['w', 'a', 's', 'd', ' ', 'i', 'q'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+      
       switch (e.key.toLowerCase()) {
         case 'w':
           keysPressed.current.w = true;
@@ -90,6 +118,11 @@ export default function Player({
     };
     
     const handleKeyUp = (e) => {
+      // Prevenir comportamento padrão das teclas
+      if (['w', 'a', 's', 'd', ' ', 'i', 'q'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+      
       switch (e.key.toLowerCase()) {
         case 'w':
           keysPressed.current.w = false;
@@ -117,12 +150,13 @@ export default function Player({
       }
     };
     
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    // Adicionar listeners com captura para garantir que funcionem
+    document.addEventListener('keydown', handleKeyDown, true);
+    document.addEventListener('keyup', handleKeyUp, true);
     
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
+      document.removeEventListener('keydown', handleKeyDown, true);
+      document.removeEventListener('keyup', handleKeyUp, true);
     };
   }, [isGrounded]);
   
@@ -221,15 +255,20 @@ export default function Player({
         top: `${position.y}px`,
         width: '64px',
         height: '64px',
-        backgroundImage: `url(${characterImage})`,
+        backgroundImage: characterImage ? `url(${characterImage})` : 'none',
+        backgroundColor: 'transparent', // Remover debug vermelho
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         transform: facingDirection === 'left' ? 'scaleX(-1)' : 'scaleX(1)',
         transition: 'transform 0.1s ease',
-        zIndex: 100
+        zIndex: 500, // Manter z-index alto
+        // border: '2px solid yellow', // Remover debug amarelo
+        boxSizing: 'border-box'
       }}
-    />
+    >
+      {/* Remover debug de posição para versão final */}
+    </div>
   );
 }
 

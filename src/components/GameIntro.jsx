@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@/components/ui/button.jsx';
 
 export default function GameIntro({ onContinue }) {
   return (
@@ -21,12 +20,12 @@ export default function GameIntro({ onContinue }) {
             </p>
           </div>
           
-          <Button 
+          <button 
             onClick={onContinue}
             className="text-xl px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-full shadow-lg"
           >
             Continuar →
-          </Button>
+          </button>
         </div>
       </div>
     </div>

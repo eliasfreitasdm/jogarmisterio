@@ -20,7 +20,7 @@ export default function GameLevel({
   onUseItem
 }) {
   // Estado do nível
-  const [playerPosition, setPlayerPosition] = useState({ x: 100, y: 100 });
+  const [playerPosition, setPlayerPosition] = useState({ x: 100, y: 450 }); // Posição mais visível
   const [cameraPosition, setCameraPosition] = useState({ x: 0, y: 0 });
   const [levelWidth, setLevelWidth] = useState(2000); // Largura padrão do nível
   const [levelHeight, setLevelHeight] = useState(600); // Altura padrão do nível
@@ -77,10 +77,15 @@ export default function GameLevel({
   };
   
   // Lidar com coleta de item
-  const handleItemCollect = (item, index) => {
-    // Notificar o componente pai
+  const handleItemCollect = (index, item) => {
+    console.log('🔍 GameLevel.handleItemCollect chamado:', { index, item: item.name });
+    
+    // Notificar o componente pai com ordem correta
     if (onItemCollect) {
+      console.log('🔍 GameLevel chamando onItemCollect do App com:', { index, item: item.name });
       onItemCollect(index, item);
+    } else {
+      console.log('❌ GameLevel: onItemCollect não está definido!');
     }
   };
   
@@ -157,48 +162,42 @@ export default function GameLevel({
           onUseItem={onUseItem}
         />
         
-        {/* Saída do nível - PORTAL FUNCIONAL */}
+        {/* Portal de saída SEMPRE VISÍVEL */}
         <div
-          className="level-exit"
+          className="level-exit-portal"
           onClick={() => {
-            // Verificar se o jogador está próximo do portal
-            const distance = Math.sqrt(
-              Math.pow((levelWidth - 100) - playerPosition.x, 2) + 
-              Math.pow((levelHeight - 150) - playerPosition.y, 2)
-            );
-            
-            if (distance < 80) {
+            console.log('Portal clicado!');
+            if (onExitReached) {
               onExitReached();
-            } else {
-              // Mostrar mensagem se estiver longe
-              alert('Aproxime-se mais do portal para avançar para a próxima época!');
             }
           }}
           style={{
-            position: 'absolute',
-            right: '100px',
-            bottom: '150px', // Posição acessível
-            width: '80px',
-            height: '120px',
-            background: 'linear-gradient(to bottom, rgba(138,43,226,0.9), rgba(75,0,130,0.7))',
-            borderRadius: '20px',
-            boxShadow: '0 0 30px rgba(138,43,226,0.8)',
+            position: 'fixed', // Posição fixa na tela
+            right: '20px',
+            bottom: '120px', // Acima dos controles de personagem
+            width: '120px',
+            height: '160px',
+            background: 'linear-gradient(to bottom, rgba(138,43,226,0.95), rgba(75,0,130,0.8))',
+            borderRadius: '25px',
+            boxShadow: '0 0 40px rgba(138,43,226,0.9), inset 0 0 20px rgba(255,255,255,0.2)',
             animation: 'portalPulse 2s infinite ease-in-out',
-            border: '3px solid rgba(255,255,255,0.8)',
+            border: '4px solid rgba(255,255,255,0.9)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '24px',
+            fontSize: '16px',
             color: 'white',
             fontWeight: 'bold',
             cursor: 'pointer',
-            zIndex: 150,
+            zIndex: 1000, // Sempre no topo
+            textAlign: 'center',
           }}
         >
-          <div style={{ fontSize: '32px', marginBottom: '5px' }}>🌀</div>
-          <div style={{ fontSize: '12px', textAlign: 'center' }}>PORTAL</div>
-          <div style={{ fontSize: '10px', textAlign: 'center' }}>Próxima Era</div>
+          <div style={{ fontSize: '50px', marginBottom: '8px', animation: 'spin 3s linear infinite' }}>🌀</div>
+          <div style={{ fontSize: '16px', marginBottom: '4px' }}>PORTAL</div>
+          <div style={{ fontSize: '14px', marginBottom: '4px' }}>Próxima Era</div>
+          <div style={{ fontSize: '12px', color: '#FFD700' }}>Clique aqui!</div>
         </div>
       </div>
       

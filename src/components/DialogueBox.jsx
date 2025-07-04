@@ -10,15 +10,17 @@ export default function DialogueBox({
   const [currentDialogueIndex, setCurrentDialogueIndex] = useState(0);
   const [showOptions, setShowOptions] = useState(false);
   
-  // Conteúdo educativo COMPLETO sobre todas as 4 épocas
+  // Conteúdo educativo EXPANDIDO com múltiplos diálogos por personagem
   const educationalContent = {
     fazenda_1830: {
       ana: {
         dialogues: [
-          "Olá! Estamos em 1830, na Fazenda Boa Vista de Inácio Lopes de Magalhães.",
+          "Olá! Sou Ana, sua guia histórica! Estamos em 1830, na Fazenda Boa Vista de Inácio Lopes de Magalhães.",
           "Esta fazenda foi o primeiro núcleo de povoamento da região, dedicada à criação de gado.",
           "O Rio Branco era fundamental para o transporte e abastecimento da fazenda.",
-          "Você sabia que o nome 'Boa Vista' vem da bela vista que se tinha do rio?"
+          "Você sabia que o nome 'Boa Vista' vem da bela vista que se tinha do rio?",
+          "A fazenda tinha cerca de 3.000 cabeças de gado e era uma das maiores da região!",
+          "Os vaqueiros vinham de várias partes do Brasil para trabalhar aqui."
         ],
         questions: [
           {
@@ -31,10 +33,12 @@ export default function DialogueBox({
       },
       lucas: {
         dialogues: [
+          "Eu sou Lucas, especialista em economia histórica! Vou te contar sobre o desenvolvimento econômico.",
           "A Fazenda Boa Vista foi estabelecida por Inácio Lopes de Magalhães em 1830.",
           "Era uma das primeiras fazendas de gado da região, aproveitando as vastas pastagens naturais.",
           "O Rio Branco servia como via de transporte para escoar a produção.",
-          "Esta fazenda foi o embrião da futura cidade de Boa Vista!"
+          "Esta fazenda foi o embrião da futura cidade de Boa Vista!",
+          "O gado era vendido para outras regiões, gerando riqueza para a área."
         ],
         questions: [
           {
@@ -47,10 +51,12 @@ export default function DialogueBox({
       },
       sofia: {
         dialogues: [
+          "Oi! Sou Sofia, bióloga e especialista em meio ambiente! Vou te mostrar a natureza da época.",
           "Observe a rica biodiversidade ao redor da fazenda!",
           "O Rio Branco abriga diversas espécies de peixes e aves aquáticas.",
           "As matas ciliares protegem as margens do rio e servem de abrigo para a fauna.",
-          "A convivência harmoniosa com a natureza era essencial para o sucesso da fazenda."
+          "A convivência harmoniosa com a natureza era essencial para o sucesso da fazenda.",
+          "Havia onças, capivaras, jacarés e centenas de espécies de aves na região!"
         ],
         questions: [
           {
@@ -58,6 +64,24 @@ export default function DialogueBox({
             options: ["Decoração", "Proteção das margens", "Madeira", "Frutas"],
             correct: 1,
             explanation: "As matas ciliares protegem as margens dos rios contra erosão e servem de habitat para diversas espécies."
+          }
+        ]
+      },
+      ze_papagaio: {
+        dialogues: [
+          "Oi! Sou Zé Papagaio, morador antigo da região! Vou te contar curiosidades!",
+          "Eu vi tudo acontecer desde o início! A fazenda era um lugar muito movimentado.",
+          "Os vaqueiros cantavam músicas típicas enquanto trabalhavam com o gado.",
+          "Havia festas tradicionais onde se comia carne assada e se dançava forró!",
+          "As crianças da fazenda brincavam no rio e aprendiam a pescar desde pequenas.",
+          "Todo mundo se conhecia e se ajudava - era como uma grande família!"
+        ],
+        questions: [
+          {
+            question: "Como era a vida social na fazenda?",
+            options: ["Isolada", "Como uma grande família", "Conflituosa", "Silenciosa"],
+            correct: 1,
+            explanation: "A vida na fazenda era comunitária, onde todos se conheciam e se ajudavam como uma grande família."
           }
         ]
       }
@@ -68,7 +92,9 @@ export default function DialogueBox({
           "Agora estamos em 1900, quando Boa Vista se tornou uma vila!",
           "A população cresceu e surgiram as primeiras ruas organizadas.",
           "Foi construída a primeira igreja e estabelecidos os primeiros comércios.",
-          "A vila começou a atrair imigrantes de outras regiões do Brasil."
+          "A vila começou a atrair imigrantes de outras regiões do Brasil.",
+          "Havia cerca de 500 habitantes vivendo de forma mais urbana.",
+          "As casas eram de adobe e madeira, com telhados de palha ou telha."
         ],
         questions: [
           {
@@ -84,7 +110,9 @@ export default function DialogueBox({
           "A vila de Boa Vista cresceu rapidamente no início do século XX.",
           "Chegaram os primeiros comerciantes e artesãos, diversificando a economia.",
           "A navegação pelo Rio Branco trouxe produtos e pessoas de outras regiões.",
-          "Foi um período de grande transformação social e econômica!"
+          "Foi um período de grande transformação social e econômica!",
+          "Surgiram as primeiras escolas e serviços públicos básicos.",
+          "O comércio de borracha também começou a se desenvolver na região."
         ],
         questions: [
           {
@@ -100,7 +128,9 @@ export default function DialogueBox({
           "A natureza ainda era abundante ao redor da vila.",
           "Os moradores dependiam dos recursos naturais para sobreviver.",
           "A pesca no Rio Branco era uma atividade importante.",
-          "As plantas medicinais da região eram amplamente utilizadas."
+          "As plantas medicinais da região eram amplamente utilizadas.",
+          "Havia hortas comunitárias onde se plantava mandioca, milho e feijão.",
+          "A coleta de frutos nativos como açaí e buriti era comum."
         ],
         questions: [
           {
@@ -110,104 +140,22 @@ export default function DialogueBox({
             explanation: "Os moradores dependiam dos recursos naturais para alimentação, medicina e materiais de construção."
           }
         ]
-      }
-    },
-    capital_1943: {
-      ana: {
-        dialogues: [
-          "Em 1943, Boa Vista se tornou capital do Território Federal de Roraima!",
-          "Foi um marco histórico que transformou completamente a cidade.",
-          "Chegaram funcionários públicos e investimentos do governo federal.",
-          "A cidade começou a ser planejada com ruas largas e praças."
-        ],
-        questions: [
-          {
-            question: "Quando Boa Vista se tornou capital?",
-            options: ["1940", "1943", "1945", "1950"],
-            correct: 1,
-            explanation: "Em 1943, Boa Vista foi elevada à capital do Território Federal de Roraima, transformando seu status político."
-          }
-        ]
       },
-      lucas: {
+      ze_papagaio: {
         dialogues: [
-          "O planejamento urbano de Boa Vista foi inspirado em Paris!",
-          "As ruas foram traçadas em formato radial, partindo do centro.",
-          "A Praça do Centro Cívico se tornou o coração da cidade.",
-          "Foi um dos primeiros exemplos de cidade planejada na Amazônia."
+          "A vila era muito animada! Havia feiras semanais na praça central.",
+          "As pessoas se reuniam para contar histórias e tocar música.",
+          "Chegavam barcos com novidades de Manaus e outras cidades.",
+          "As crianças brincavam de roda e empinavam papagaio.",
+          "Havia um barbeiro que também era dentista e contador de histórias!",
+          "Todo domingo tinha missa seguida de almoço comunitário."
         ],
         questions: [
           {
-            question: "Em que cidade se inspirou o planejamento de Boa Vista?",
-            options: ["Londres", "Paris", "Roma", "Berlim"],
+            question: "Onde aconteciam as feiras da vila?",
+            options: ["No rio", "Na praça central", "Na igreja", "Nas casas"],
             correct: 1,
-            explanation: "O planejamento urbano de Boa Vista foi inspirado em Paris, com ruas radiais partindo do centro."
-          }
-        ]
-      },
-      sofia: {
-        dialogues: [
-          "O crescimento urbano trouxe desafios ambientais.",
-          "Era necessário equilibrar desenvolvimento e preservação.",
-          "Os igarapés urbanos precisavam ser protegidos.",
-          "A cidade cresceu respeitando as características naturais da região."
-        ],
-        questions: [
-          {
-            question: "Qual foi o desafio do crescimento urbano?",
-            options: ["Falta de espaço", "Equilibrar desenvolvimento e preservação", "Falta de água", "Terremotos"],
-            correct: 1,
-            explanation: "O principal desafio era equilibrar o desenvolvimento urbano com a preservação ambiental."
-          }
-        ]
-      }
-    },
-    boa_vista_moderna: {
-      ana: {
-        dialogues: [
-          "Hoje, Boa Vista é uma moderna capital brasileira!",
-          "É a única capital brasileira totalmente localizada no Hemisfério Norte.",
-          "A cidade mantém seu planejamento urbano original com melhorias modernas.",
-          "É um importante centro econômico e cultural da região Norte."
-        ],
-        questions: [
-          {
-            question: "Qual característica única de Boa Vista?",
-            options: ["Maior cidade do Norte", "Única capital no Hemisfério Norte", "Mais antiga do Brasil", "Maior população"],
-            correct: 1,
-            explanation: "Boa Vista é a única capital brasileira totalmente localizada no Hemisfério Norte."
-          }
-        ]
-      },
-      lucas: {
-        dialogues: [
-          "Boa Vista se tornou estado em 1988 com a nova Constituição.",
-          "A cidade cresceu muito nas últimas décadas.",
-          "Hoje tem universidades, hospitais e infraestrutura moderna.",
-          "É uma das cidades que mais cresce na região Norte!"
-        ],
-        questions: [
-          {
-            question: "Quando Roraima se tornou estado?",
-            options: ["1985", "1988", "1990", "1992"],
-            correct: 1,
-            explanation: "Roraima se tornou estado em 1988 com a promulgação da nova Constituição brasileira."
-          }
-        ]
-      },
-      sofia: {
-        dialogues: [
-          "Boa Vista hoje busca ser uma cidade sustentável.",
-          "Há projetos de preservação dos igarapés urbanos.",
-          "A cidade mantém muitas áreas verdes e parques.",
-          "É um exemplo de como crescer preservando a natureza!"
-        ],
-        questions: [
-          {
-            question: "Como Boa Vista busca crescer atualmente?",
-            options: ["Sem planejamento", "De forma sustentável", "Apenas industrial", "Só comercial"],
-            correct: 1,
-            explanation: "Boa Vista busca crescer de forma sustentável, equilibrando desenvolvimento e preservação ambiental."
+            explanation: "As feiras aconteciam na praça central, que era o coração social da vila."
           }
         ]
       }

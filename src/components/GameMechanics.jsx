@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Button } from '@/components/ui/button.jsx'
 import { X, ArrowRight } from 'lucide-react'
 
 // Dados dos diálogos por personagem e época
@@ -216,9 +215,9 @@ export function DialogueBox({ character, era, onClose, onKnowledgeGain }) {
             </div>
             <h3 className="text-xl font-bold text-gray-800">{dialogue.name}</h3>
           </div>
-          <Button variant="ghost" size="sm" onClick={onClose}>
+          <button variant="ghost" size="sm" onClick={onClose}>
             <X className="w-5 h-5" />
-          </Button>
+          </button>
         </div>
         
         <div className="bg-gray-50 rounded-2xl p-6 mb-4">
@@ -239,13 +238,13 @@ export function DialogueBox({ character, era, onClose, onKnowledgeGain }) {
             ))}
           </div>
           
-          <Button onClick={handleNext} className="bg-gradient-to-r from-blue-500 to-green-500 text-white">
+          <button onClick={handleNext} className="bg-gradient-to-r from-blue-500 to-green-500 text-white">
             {currentMessage < dialogue.messages.length - 1 ? (
               <>Próximo <ArrowRight className="w-4 h-4 ml-2" /></>
             ) : (
               'Finalizar'
             )}
-          </Button>
+          </button>
         </div>
       </div>
     </div>
@@ -304,16 +303,16 @@ export function PuzzleBox({ era, onClose, onKnowledgeGain }) {
             </div>
             
             <div className="flex justify-between">
-              <Button variant="outline" onClick={handleClose}>
+              <button variant="outline" onClick={handleClose}>
                 Pular
-              </Button>
-              <Button 
+              </button>
+              <button 
                 onClick={handleSubmit}
                 disabled={selectedAnswer === null}
                 className="bg-gradient-to-r from-blue-500 to-green-500 text-white"
               >
                 Responder
-              </Button>
+              </button>
             </div>
           </>
         ) : (
@@ -345,9 +344,9 @@ export function PuzzleBox({ era, onClose, onKnowledgeGain }) {
             </div>
             
             <div className="text-center">
-              <Button onClick={handleClose} className="bg-gradient-to-r from-blue-500 to-green-500 text-white">
+              <button onClick={handleClose} className="bg-gradient-to-r from-blue-500 to-green-500 text-white">
                 Continuar Aventura
-              </Button>
+              </button>
             </div>
           </>
         )}

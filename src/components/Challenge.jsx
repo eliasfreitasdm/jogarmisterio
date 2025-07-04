@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button.jsx';
 import { X } from 'lucide-react';
 
 // Componente para desafios variados (puzzles, minijogos, etc.)
@@ -84,20 +83,20 @@ export default function Challenge({
         )}
         
         <div className="flex justify-between">
-          <Button
+          <button
             variant="outline"
             onClick={onClose}
           >
             Cancelar
-          </Button>
+          </button>
           
-          <Button
+          <button
             onClick={handleSubmit}
             disabled={selectedOption === null}
             className={isCompleted ? 'bg-green-500 hover:bg-green-600' : ''}
           >
             {isCompleted ? 'Concluído' : 'Responder'}
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -197,20 +196,20 @@ export default function Challenge({
         )}
         
         <div className="flex justify-between">
-          <Button
+          <button
             variant="outline"
             onClick={onClose}
           >
             Cancelar
-          </Button>
+          </button>
           
           {isCompleted && (
-            <Button
+            <button
               onClick={onClose}
               className="bg-green-500 hover:bg-green-600"
             >
               Concluído
-            </Button>
+            </button>
           )}
         </div>
       </div>
@@ -283,20 +282,20 @@ export default function Challenge({
         )}
         
         <div className="flex justify-between">
-          <Button
+          <button
             variant="outline"
             onClick={onClose}
           >
             Cancelar
-          </Button>
+          </button>
           
-          <Button
+          <button
             onClick={handleSubmit}
             disabled={!userAnswer.trim()}
             className={isCompleted ? 'bg-green-500 hover:bg-green-600' : ''}
           >
             {isCompleted ? 'Concluído' : 'Verificar'}
-          </Button>
+          </button>
         </div>
       </div>
     );
@@ -399,27 +398,27 @@ export default function Challenge({
         )}
         
         <div className="flex justify-between">
-          <Button
+          <button
             variant="outline"
             onClick={onClose}
           >
             Cancelar
-          </Button>
+          </button>
           
           {!isCompleted ? (
-            <Button
+            <button
               onClick={handleStart}
               disabled={isPlaying}
             >
               {isPlaying ? 'Observando...' : 'Mostrar Sequência'}
-            </Button>
+            </button>
           ) : (
-            <Button
+            <button
               onClick={onClose}
               className="bg-green-500 hover:bg-green-600"
             >
               Concluído
-            </Button>
+            </button>
           )}
         </div>
       </div>
@@ -434,9 +433,9 @@ export default function Challenge({
             <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
             <p className="text-sm text-gray-500">{era.name}</p>
           </div>
-          <Button variant="ghost" onClick={onClose}>
+          <button variant="ghost" onClick={onClose}>
             <X className="w-5 h-5" />
-          </Button>
+          </button>
         </div>
         
         {renderChallengeContent()}

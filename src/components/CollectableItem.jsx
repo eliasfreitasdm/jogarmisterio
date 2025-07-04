@@ -32,15 +32,24 @@ export default function CollectableItem({
   
   // Função para coletar o item
   const handleClick = () => {
-    if (!isCollected && !showCollectEffect) {
+    console.log('🔍 CollectableItem.handleClick chamado:', { item: item.name, isCollected, showCollectEffect });
+    
+    if (!isCollected) { // Remover verificação de showCollectEffect
+      console.log('✅ CollectableItem: Iniciando coleta do item:', item.name);
       setShowCollectEffect(true);
       
-      // Notificar coleta após animação
+      // Notificar coleta imediatamente (sem delay)
+      console.log('🔍 CollectableItem chamando onCollect para:', item.name);
+      if (onCollect) {
+        onCollect(item);
+      }
+      
+      // Resetar efeito após animação
       setTimeout(() => {
-        if (onCollect) {
-          onCollect(item);
-        }
-      }, 500);
+        setShowCollectEffect(false);
+      }, 1000);
+    } else {
+      console.log('❌ CollectableItem: Item já foi coletado:', item.name);
     }
   };
   

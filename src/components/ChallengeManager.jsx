@@ -268,9 +268,9 @@ export default function ChallengeManager({
                 <h2 className="text-2xl font-bold text-gray-800">Desafios de {era.name}</h2>
                 <p className="text-sm text-gray-500">Escolha um desafio para testar seus conhecimentos</p>
               </div>
-              <Button variant="ghost" onClick={handleClose}>
+              <button variant="ghost" onClick={handleClose}>
                 <X className="w-5 h-5" />
-              </Button>
+              </button>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -316,12 +316,12 @@ export default function ChallengeManager({
                 Desafios completados: {completedChallenges.length} / {availableChallenges.length}
               </div>
               
-              <Button
+              <button
                 variant="outline"
                 onClick={handleClose}
               >
                 Fechar
-              </Button>
+              </button>
             </div>
           </>
         )}

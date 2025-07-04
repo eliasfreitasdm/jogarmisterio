@@ -17,18 +17,26 @@ export default function ItemManager({
     return collectedItems.includes(itemId);
   };
   
-  // Verificar itens próximos ao jogador para mostrar indicador
+  // Verificar itens próximos ao jogador para coleta automática
   useEffect(() => {
     if (!playerPosition) return;
     
     const nearby = items
       .filter((item, index) => !isItemCollected(index))
-      .filter(item => {
+      .filter((item, index) => {
         const distance = Math.sqrt(
           Math.pow(item.x - playerPosition.x, 2) + 
           Math.pow(item.y - playerPosition.y, 2)
         );
-        return distance < 150; // Aumentar raio de detecção
+        
+        // Se estiver muito próximo (menos de 60px), coletar automaticamente
+        if (distance < 60) {
+          handleCollectItem(item, index);
+          return false;
+        }
+        
+        // Se estiver próximo (menos de 150px), mostrar indicador
+        return distance < 150;
       });
     
     setNearbyItems(nearby);
@@ -36,8 +44,13 @@ export default function ItemManager({
   
   // Função para coletar um item
   const handleCollectItem = (item, originalIndex) => {
+    console.log('🔍 ItemManager.handleCollectItem chamado:', { item: item.name, originalIndex, currentEraId });
+    
     if (onItemCollect) {
-      onItemCollect(originalIndex, item);
+      console.log('🔍 ItemManager chamando onItemCollect com:', { originalIndex, item: item.name });
+      onItemCollect(originalIndex, item); // Ordem correta: index primeiro
+    } else {
+      console.log('❌ ItemManager: onItemCollect não está definido!');
     }
   };
   
@@ -50,7 +63,7 @@ export default function ItemManager({
           item={item}
           position={{ x: item.x, y: item.y }}
           isCollected={isItemCollected(index)}
-          onCollect={() => handleCollectItem(item, index)}
+          onCollect={() => handleCollectItem(item, index)} // Ordem correta: item, index
         />
       ))}
       

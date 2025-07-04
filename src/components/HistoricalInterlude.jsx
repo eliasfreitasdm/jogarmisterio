@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button.jsx';
 import { ChevronRight, Award } from 'lucide-react';
 
 // Componente para interlúdios com personagens históricos
@@ -141,7 +140,7 @@ export default function HistoricalInterlude({
                 {currentDialogueIndex + 1} / {character.dialogue.length}
               </div>
               
-              <Button
+              <button
                 onClick={handleNextDialogue}
               >
                 {currentDialogueIndex < character.dialogue.length - 1 ? (
@@ -151,7 +150,7 @@ export default function HistoricalInterlude({
                 ) : (
                   'Responder Quiz'
                 )}
-              </Button>
+              </button>
             </div>
           </div>
         </div>
@@ -239,12 +238,12 @@ export default function HistoricalInterlude({
         </div>
         
         {!showResult ? (
-          <Button
+          <button
             onClick={handleCheckAnswer}
             disabled={selectedAnswer === null}
           >
             Verificar Resposta
-          </Button>
+          </button>
         ) : (
           <div
             style={{
@@ -317,11 +316,11 @@ export default function HistoricalInterlude({
               )}
             </div>
             
-            <Button
+            <button
               onClick={handleComplete}
             >
               Continuar
-            </Button>
+            </button>
           </div>
         )}
       </div>
@@ -379,13 +378,13 @@ export default function HistoricalInterlude({
             Encontro Histórico
           </h1>
           
-          <Button
+          <button
             variant="outline"
             size="sm"
             onClick={handleComplete}
           >
             Fechar
-          </Button>
+          </button>
         </div>
         
         <div

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button.jsx';
 import { ChevronRight, Award, BookOpen, Map } from 'lucide-react';
 
 // Componente para a conclusão narrativa
@@ -460,18 +459,18 @@ export default function NarrativeConclusion({
             gap: '10px',
           }}
         >
-          <Button
+          <button
             onClick={onRestart}
           >
             Jogar Novamente
-          </Button>
+          </button>
           
-          <Button
+          <button
             variant="outline"
             onClick={onExit}
           >
             Sair
-          </Button>
+          </button>
         </div>
         
         <style jsx>{`
@@ -575,14 +574,14 @@ export default function NarrativeConclusion({
                 gap: '10px',
               }}
             >
-              <Button
+              <button
                 variant="outline"
                 onClick={onExit}
               >
                 Menu Principal
-              </Button>
+              </button>
               
-              <Button
+              <button
                 onClick={handleNextStep}
               >
                 {currentStep < 3 ? (
@@ -592,7 +591,7 @@ export default function NarrativeConclusion({
                 ) : (
                   'Ver Créditos'
                 )}
-              </Button>
+              </button>
             </div>
           </div>
         </div>

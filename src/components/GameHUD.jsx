@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Book, Heart, Zap, Map, Compass, Award, MessageCircle, Backpack } from 'lucide-react';
-import { Button } from '@/components/ui/button.jsx';
 
 // Componente para o HUD do jogo
 export default function GameHUD({
@@ -66,14 +65,14 @@ export default function GameHUD({
       >
         <div className="mini-map-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
           <span style={{ color: 'white', fontSize: '12px' }}>{era?.name || 'Mapa'}</span>
-          <Button
+          <button
             variant="ghost"
             size="sm"
             onClick={toggleMiniMap}
             style={{ padding: '0', minWidth: '20px', height: '20px', color: 'white' }}
           >
             ×
-          </Button>
+          </button>
         </div>
         
         <div
@@ -339,7 +338,7 @@ export default function GameHUD({
         
         {/* Botões de ação */}
         <div className="action-buttons" style={{ display: 'flex', gap: '10px' }}>
-          <Button
+          <button
             variant="ghost"
             size="sm"
             onClick={onDialogueClick}
@@ -356,9 +355,9 @@ export default function GameHUD({
             title="Conversar"
           >
             <MessageCircle size={20} />
-          </Button>
+          </button>
           
-          <Button
+          <button
             variant="ghost"
             size="sm"
             onClick={onPuzzleClick}
@@ -375,9 +374,9 @@ export default function GameHUD({
             title="Desafios"
           >
             <Award size={20} />
-          </Button>
+          </button>
           
-          <Button
+          <button
             variant="ghost"
             size="sm"
             onClick={onInventoryClick}
@@ -394,9 +393,9 @@ export default function GameHUD({
             title="Inventário"
           >
             <Backpack size={20} />
-          </Button>
+          </button>
           
-          <Button
+          <button
             variant="ghost"
             size="sm"
             onClick={toggleMiniMap}
@@ -413,7 +412,7 @@ export default function GameHUD({
             title="Mapa"
           >
             <Map size={20} />
-          </Button>
+          </button>
         </div>
       </div>
       

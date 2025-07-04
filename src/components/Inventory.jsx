@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button.jsx';
 import { X, Info } from 'lucide-react';
 
 // Componente para o sistema de inventário
@@ -47,55 +46,55 @@ export default function Inventory({
       <div className="bg-white rounded-3xl w-full max-w-4xl p-8 shadow-2xl">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800">Inventário</h2>
-          <Button variant="ghost" onClick={onClose}>
+          <button variant="ghost" onClick={onClose}>
             <X className="w-5 h-5" />
-          </Button>
+          </button>
         </div>
         
         {/* Abas de categorias */}
         <div className="flex space-x-2 mb-6 overflow-x-auto pb-2">
-          <Button 
+          <button 
             variant={activeTab === 'all' ? 'default' : 'outline'}
             onClick={() => setActiveTab('all')}
             className="whitespace-nowrap"
           >
             Todos os Itens
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant={activeTab === 'artifact' ? 'default' : 'outline'}
             onClick={() => setActiveTab('artifact')}
             className="whitespace-nowrap"
           >
             🏺 Artefatos
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant={activeTab === 'document' ? 'default' : 'outline'}
             onClick={() => setActiveTab('document')}
             className="whitespace-nowrap"
           >
             📜 Documentos
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant={activeTab === 'tool' ? 'default' : 'outline'}
             onClick={() => setActiveTab('tool')}
             className="whitespace-nowrap"
           >
             🔧 Ferramentas
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant={activeTab === 'book' ? 'default' : 'outline'}
             onClick={() => setActiveTab('book')}
             className="whitespace-nowrap"
           >
             📚 Livros
-          </Button>
-          <Button 
+          </button>
+          <button 
             variant={activeTab === 'relic' ? 'default' : 'outline'}
             onClick={() => setActiveTab('relic')}
             className="whitespace-nowrap"
           >
             ✨ Relíquias
-          </Button>
+          </button>
         </div>
         
         {filteredItems.length === 0 ? (
@@ -118,7 +117,7 @@ export default function Inventory({
                   <h3 className="font-bold text-gray-800">{item.name}</h3>
                 </div>
                 <p className="text-sm text-gray-600 mb-2">{item.description}</p>
-                <div className="text-xs text-blue-600 font-semibold">+{item.points} pontos de conhecimento</div>
+                <div className="text-xs text-blue-600 font-semibold">+{item.points || 0} pontos de conhecimento</div>
               </div>
             ))}
           </div>
@@ -144,7 +143,7 @@ export default function Inventory({
                      selectedItem.type === 'relic' ? 'Relíquia' : 'Item'}
                   </div>
                   <div className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">
-                    +{selectedItem.points} conhecimento
+                    +{selectedItem.points || 0} conhecimento
                   </div>
                   {selectedItem.era && (
                     <div className="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded">
@@ -154,12 +153,12 @@ export default function Inventory({
                 </div>
                 
                 {selectedItem.usable && (
-                  <Button 
+                  <button 
                     onClick={() => handleUseItem(selectedItem)}
                     className="bg-gradient-to-r from-blue-500 to-green-500 text-white"
                   >
                     Usar Item
-                  </Button>
+                  </button>
                 )}
               </div>
             </div>
@@ -169,7 +168,7 @@ export default function Inventory({
         {/* Estatísticas do inventário */}
         <div className="mt-6 flex justify-between text-sm text-gray-500">
           <div>Total de itens: {items.length}</div>
-          <div>Pontos de conhecimento: {items.reduce((total, item) => total + item.points, 0)}</div>
+          <div>Pontos de conhecimento: {items.reduce((total, item) => total + (item.points || 0), 0)}</div>
         </div>
       </div>
     </div>

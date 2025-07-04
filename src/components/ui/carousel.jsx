@@ -4,7 +4,6 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
 
 const CarouselContext = React.createContext(null)
 
@@ -151,7 +150,7 @@ function CarouselPrevious({
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button
+    <button
       data-slot="carousel-previous"
       variant={variant}
       size={size}
@@ -163,7 +162,7 @@ function CarouselPrevious({
       {...props}>
       <ArrowLeft />
       <span className="sr-only">Previous slide</span>
-    </Button>
+    </button>
   );
 }
 
@@ -176,7 +175,7 @@ function CarouselNext({
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button
+    <button
       data-slot="carousel-next"
       variant={variant}
       size={size}
@@ -188,7 +187,7 @@ function CarouselNext({
       {...props}>
       <ArrowRight />
       <span className="sr-only">Next slide</span>
-    </Button>
+    </button>
   );
 }
 

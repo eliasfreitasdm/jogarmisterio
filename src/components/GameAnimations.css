@@ -157,3 +157,36 @@
   }
 }
 
+
+/* Animações para portal e coleta */
+@keyframes portalPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(138,43,226,0.9), inset 0 0 20px rgba(255,255,255,0.2);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(138,43,226,1), inset 0 0 30px rgba(255,255,255,0.3);
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes collectEffect {
+  0% { 
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) translateY(-20px);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: scale(2) translateY(-40px);
+    opacity: 0;
+  }
+}
+
