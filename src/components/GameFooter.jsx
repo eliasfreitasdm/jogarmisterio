@@ -1,5 +1,5 @@
 import React from 'react';
-import logoFetec from '../src/logo-fetec.png'; // ajuste o caminho conforme necessário
+import logoFetec from '/src/logo-fetec.png'; // ajuste o caminho conforme necessário
 
 export default function GameFooter() {
   return (
