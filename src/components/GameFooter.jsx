@@ -80,8 +80,7 @@ export default function GameFooter() {
 
       {/* Única Logo Centralizada */}
       <div style={{
-        width: '80px',
-        height: '40px',
+        width: '400px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
