@@ -215,9 +215,57 @@ const ERAS = {
     ],
     // Itens colecionáveis
     items: [
-      { x: 250, y: 400, type: 'document', name: 'Decreto de Vila', description: 'Documento que elevou Boa Vista à categoria de vila.', points: 15, collected: false },
-      { x: 700, y: 350, type: 'artifact', name: 'Sino da Igreja', description: 'Miniatura do sino da primeira igreja da vila.', points: 10, collected: false },
-      { x: 1400, y: 350, type: 'artifact', name: 'Moeda Antiga', description: 'Moeda do período imperial usada na vila.', points: 10, collected: false },
+      {
+      "x": 380,
+      "y": 420,
+      "type": "lamp",
+      "name": "Lamparina Antiga",
+      "description": "Lamparina a óleo usada pelos primeiros habitantes da fazenda.",
+      "points": 15,
+      "collected": false,
+      "popup": {
+        "title": "💡 OBJETO HISTÓRICO DESBLOQUEADO!",
+        "subtitle": "Lamparina Antiga – Século XIX",
+        "educationalText": "Antes da chegada da energia elétrica, os moradores da Fazenda Boa Vista usavam lamparinas de querosene ou óleo de mamona para se orientar à noite.",
+        "historicalContext": "No início do século XIX, a vida era rústica e os recursos eram limitados. A iluminação artificial era essencial para atividades noturnas.",
+        "trivia": "Sabia que a eletrificação de Boa Vista só começou nas décadas de 1930 e 1940?",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 720,
+      "y": 370,
+      "type": "document",
+      "name": "Sesmaria de Inácio Lopes",
+      "description": "Documento que concedeu a terra da Fazenda Boa Vista.",
+      "points": 25,
+      "collected": false,
+      "popup": {
+        "title": "📜 DOCUMENTO HISTÓRICO",
+        "subtitle": "Sesmaria de Inácio Lopes – 1830",
+        "educationalText": "As sesmarias eram concessões de terras feitas pela Coroa Portuguesa a colonos para promover o povoamento. Inácio Lopes recebeu uma dessas sesmarias onde fundou a Fazenda Boa Vista.",
+        "historicalContext": "Esse sistema de distribuição de terras foi usado durante a colonização brasileira para estimular o desenvolvimento do interior.",
+        "trivia": "A sesmaria de Boa Vista é o embrião da capital de Roraima!",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 1300,
+      "y": 350,
+      "type": "artifact",
+      "name": "Ferradura de Tropas",
+      "description": "Ferradura usada por tropas que cruzavam a região.",
+      "points": 20,
+      "collected": false,
+      "popup": {
+        "title": "🐴 OBJETO RURAL HISTÓRICO",
+        "subtitle": "Ferradura de Tropas – Século XIX",
+        "educationalText": "As tropas eram grupos de cavalos ou bois usados para transporte de mercadorias entre povoados distantes. Era a principal forma de comércio.",
+        "historicalContext": "Boa Vista era isolada e dependia das tropas para trocar produtos com outras regiões do país.",
+        "trivia": "As tropas levavam desde sal e tecidos até cartas e alimentos!",
+        "buttonLabel": "Fechar"
+      }
+    },
     ],
     // Inimigos
     enemies: [
@@ -256,9 +304,57 @@ const ERAS = {
     ],
     // Inimigos
     enemies: [
-      { x: 350, y: 500, type: 'shadow', name: 'Sombra da Modernização', health: 3, damage: 2, movePattern: 'chase' },
-      { x: 800, y: 500, type: 'shadow', name: 'Sombra da Modernização', health: 3, damage: 2, movePattern: 'chase' },
-      { x: 1400, y: 500, type: 'shadow', name: 'Sombra da Modernização', health: 3, damage: 2, movePattern: 'chase' },
+ {
+      "x": 250,
+      "y": 400,
+      "type": "document",
+      "name": "Criação da Vila",
+      "description": "Documento que elevou Boa Vista à condição de vila.",
+      "points": 15,
+      "collected": false,
+      "popup": {
+        "title": "🏘️ BOA VISTA VIROU VILA!",
+        "subtitle": "Elevação à Vila – 1890",
+        "educationalText": "Boa Vista foi oficialmente elevada à categoria de vila no final do século XIX, o que permitiu a instalação de autoridades locais.",
+        "historicalContext": "Esse status significava mais autonomia administrativa e início da urbanização.",
+        "trivia": "Nessa época, começaram a surgir ruas e praças planejadas!",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 700,
+      "y": 350,
+      "type": "artifact",
+      "name": "Sino da Igreja Matriz",
+      "description": "Símbolo da religiosidade e reunião da comunidade.",
+      "points": 10,
+      "collected": false,
+      "popup": {
+        "title": "🔔 SINO HISTÓRICO",
+        "subtitle": "Sino da Igreja – 1900",
+        "educationalText": "O sino da Igreja Matriz chamava a população para missas, reuniões e alertava sobre emergências.",
+        "historicalContext": "A Igreja era o ponto central da vida em comunidade e da organização social na vila.",
+        "trivia": "A primeira paróquia da vila foi dedicada a Nossa Senhora do Carmo.",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 1400,
+      "y": 350,
+      "type": "artifact",
+      "name": "Moeda de Cobre",
+      "description": "Moeda usada no comércio da vila.",
+      "points": 10,
+      "collected": false,
+      "popup": {
+        "title": "🪙 RELÍQUIA DO COMÉRCIO",
+        "subtitle": "Moeda de Cobre – Início do século XX",
+        "educationalText": "O comércio local usava moedas de cobre e prata para compra de produtos essenciais como farinha, querosene e tecidos.",
+        "historicalContext": "O mercado da vila cresceu com o aumento da população e da atividade extrativista.",
+        "trivia": "A moeda também era usada para pagar impostos coloniais.",
+        "buttonLabel": "Fechar"
+      }
+    },
     ]
   },
   BOA_VISTA_MODERNA: {
@@ -285,15 +381,111 @@ const ERAS = {
     ],
     // Itens colecionáveis
     items: [
-      { x: 150, y: 400, type: 'document', name: 'Constituição Estadual', description: 'Documento da criação do Estado de Roraima.', points: 15, collected: false },
-      { x: 500, y: 350, type: 'artifact', name: 'Maquete da Orla', description: 'Miniatura da Orla Taumanan, cartão postal da cidade.', points: 10, collected: false },
-      { x: 1500, y: 200, type: 'artifact', name: 'Placa Solar', description: 'Símbolo da sustentabilidade na Boa Vista moderna.', points: 10, collected: false },
+    {
+      "x": 200,
+      "y": 400,
+      "type": "document",
+      "name": "Criação do Território",
+      "description": "Decreto que cria o Território Federal do Rio Branco.",
+      "points": 15,
+      "collected": false,
+      "popup": {
+        "title": "📃 NOVA ERA POLÍTICA",
+        "subtitle": "Criação do Território Federal – 1943",
+        "educationalText": "O presidente Getúlio Vargas criou o Território Federal do Rio Branco, separando a região do Amazonas e nomeando Boa Vista como capital.",
+        "historicalContext": "A decisão visava aumentar a presença do governo federal na fronteira.",
+        "trivia": "O território só se chamaria Roraima anos depois.",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 600,
+      "y": 350,
+      "type": "artifact",
+      "name": "Mapa Radial",
+      "description": "Mapa do projeto urbano de Boa Vista.",
+      "points": 15,
+      "collected": false,
+      "popup": {
+        "title": "🗺️ CIDADE PLANEJADA",
+        "subtitle": "Mapa Radial – Década de 1940",
+        "educationalText": "Boa Vista foi planejada com ruas que partem do centro em forma de leque, inspirada em cidades europeias modernas.",
+        "historicalContext": "Esse projeto visava facilitar o crescimento ordenado e o acesso aos bairros.",
+        "trivia": "É uma das poucas capitais brasileiras com plano radial.",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 1300,
+      "y": 250,
+      "type": "artifact",
+      "name": "Farda Territorial",
+      "description": "Uniforme dos primeiros funcionários do novo território.",
+      "points": 10,
+      "collected": false,
+      "popup": {
+        "title": "👔 SÍMBOLO FUNCIONAL",
+        "subtitle": "Farda Territorial – 1944",
+        "educationalText": "A criação do território trouxe servidores federais com fardas e crachás específicos.",
+        "historicalContext": "O governo instalou delegacias, postos médicos e escolas.",
+        "trivia": "Essas fardas eram costuradas por costureiras locais!",
+        "buttonLabel": "Fechar"
+      }
+    },
     ],
     // Inimigos
     enemies: [
-      { x: 300, y: 500, type: 'ghost', name: 'Fantasma do Passado', health: 4, damage: 2, movePattern: 'teleport' },
-      { x: 900, y: 500, type: 'ghost', name: 'Fantasma do Passado', health: 4, damage: 2, movePattern: 'teleport' },
-      { x: 1600, y: 500, type: 'ghost', name: 'Fantasma do Passado', health: 4, damage: 2, movePattern: 'teleport' },
+    {
+      "x": 150,
+      "y": 400,
+      "type": "document",
+      "name": "Constituição Estadual",
+      "description": "Documento que formalizou a criação do Estado de Roraima.",
+      "points": 15,
+      "collected": false,
+      "popup": {
+        "title": "📘 ESTADO CRIADO",
+        "subtitle": "Constituição de Roraima – 1991",
+        "educationalText": "Com a Constituição Estadual, Roraima deixou de ser território e se tornou um estado com autonomia política e administrativa.",
+        "historicalContext": "Boa Vista foi escolhida como capital pela sua infraestrutura e localização estratégica.",
+        "trivia": "Roraima foi o último estado a ser criado no Brasil!",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 500,
+      "y": 350,
+      "type": "artifact",
+      "name": "Maquete da Orla Taumanan",
+      "description": "Miniatura de um dos principais pontos turísticos da cidade.",
+      "points": 10,
+      "collected": false,
+      "popup": {
+        "title": "🏞️ BELEZA NATURAL",
+        "subtitle": "Orla Taumanan – Século XXI",
+        "educationalText": "A orla foi construída para revitalizar o centro da cidade e oferecer lazer à população.",
+        "historicalContext": "É um dos cartões postais de Boa Vista, com vista para o rio Branco.",
+        "trivia": "‘Taumanan’ significa ‘paz’ na língua Macuxi.",
+        "buttonLabel": "Fechar"
+      }
+    },
+    {
+      "x": 1500,
+      "y": 200,
+      "type": "artifact",
+      "name": "Placa Solar",
+      "description": "Símbolo da preocupação ambiental e energia limpa.",
+      "points": 10,
+      "collected": false,
+      "popup": {
+        "title": "⚡ ENERGIA DO FUTURO",
+        "subtitle": "Placa Solar – Atualidade",
+        "educationalText": "Boa Vista é referência nacional no uso de energia solar em prédios públicos e escolas.",
+        "historicalContext": "A energia renovável é parte da estratégia de sustentabilidade urbana da cidade.",
+        "trivia": "Boa Vista já venceu prêmios de cidade inteligente no Brasil.",
+        "buttonLabel": "Fechar"
+      }
+    },
     ]
   }
 }
