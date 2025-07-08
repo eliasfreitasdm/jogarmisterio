@@ -80,59 +80,118 @@ const GAME_STATES = {
 
 // Épocas históricas
 const ERAS = {
-  FAZENDA_1830: {
-    id: 'fazenda_1830',
-    name: 'Fazenda Boa Vista (1830)',
-    background: fazenda1830,
-    description: 'O início de tudo: a fazenda de gado de Inácio Lopes de Magalhães',
-    colors: {
-      primary: '#2D5016',
-      secondary: '#8B4513',
-      accent: '#F5DEB3'
-    },
-    // Plataformas para o nível
-    platforms: [
-      // Chão principal
-      { x: 0, y: 550, width: 2000, height: 50, type: 'grass' },
-      // Plataformas adicionais
-      { x: 300, y: 450, width: 200, height: 20, type: 'wood' },
-      { x: 600, y: 400, width: 150, height: 20, type: 'wood' },
-      { x: 850, y: 350, width: 200, height: 20, type: 'wood' },
-      { x: 1200, y: 400, width: 250, height: 20, type: 'wood' },
-      { x: 1500, y: 350, width: 200, height: 20, type: 'wood' },
-      { x: 1800, y: 300, width: 200, height: 20, type: 'wood' },
-    ],
-    // Itens colecionáveis com explicações educativas detalhadas
-    items: [
-      { 
-        x: 380, y: 420, type: 'lamp', name: 'Lamparina Antiga', 
-        description: 'Lamparina a óleo usada pelos primeiros habitantes da fazenda.',
-        educationalText: 'Esta lamparina representa a vida simples dos primeiros colonos. Sem energia elétrica, eles dependiam de lamparinas a óleo de mamona ou querosene para iluminar suas casas durante a noite. Era um item essencial para a sobrevivência na fronteira.',
-        historicalContext: 'Em 1830, Boa Vista era apenas uma fazenda isolada. Os habitantes viviam de forma muito simples, criando gado e plantando para subsistência.',
-        points: 15, collected: false 
-      },
-      { 
-        x: 720, y: 370, type: 'document', name: 'Escritura da Fazenda', 
-        description: 'Documento original da fundação da Fazenda Boa Vista.',
-        educationalText: 'Este documento marca o início oficial de Boa Vista. A fazenda foi estabelecida por Inácio Lopes de Magalhães, que recebeu uma sesmaria (concessão de terra) da Coroa Portuguesa para criar gado na região.',
-        historicalContext: 'As sesmarias eram a forma como Portugal distribuía terras no Brasil colonial. Esta fazenda se tornaria o núcleo da futura capital de Roraima.',
-        points: 25, collected: false 
-      },
-      { 
-        x: 1300, y: 350, type: 'artifact', name: 'Ferradura Antiga', 
-        description: 'Ferradura usada nos cavalos da fazenda original.',
-        educationalText: 'Os cavalos eram fundamentais para o transporte e trabalho na fazenda. Esta ferradura mostra como os colonos cuidavam de seus animais, essenciais para a sobrevivência na região isolada do extremo norte do Brasil.',
-        historicalContext: 'O gado e os cavalos eram a base da economia local. A pecuária foi a primeira atividade econômica importante da região que hoje é Boa Vista.',
-        points: 20, collected: false 
-      },
-    ],
-    // Inimigos
-    enemies: [
-      { x: 500, y: 500, type: 'spirit', name: 'Espírito da Floresta', health: 1, damage: 1, movePattern: 'patrol' },
-      { x: 1000, y: 500, type: 'spirit', name: 'Espírito da Floresta', health: 1, damage: 1, movePattern: 'patrol' },
-      { x: 1600, y: 500, type: 'spirit', name: 'Espírito da Floresta', health: 1, damage: 1, movePattern: 'patrol' },
-    ]
+ FAZENDA_1830: {
+  id: 'fazenda_1830',
+  name: 'Fazenda Boa Vista (1830)',
+  background: fazenda1830,
+  description: 'O início de tudo: a fazenda de gado de Inácio Lopes de Magalhães',
+  colors: {
+    primary: '#2D5016',
+    secondary: '#8B4513',
+    accent: '#F5DEB3'
   },
+  platforms: [
+    { x: 0, y: 550, width: 2000, height: 50, type: 'grass' },
+    { x: 300, y: 450, width: 200, height: 20, type: 'wood' },
+    { x: 600, y: 400, width: 150, height: 20, type: 'wood' },
+    { x: 850, y: 350, width: 200, height: 20, type: 'wood' },
+    { x: 1200, y: 400, width: 250, height: 20, type: 'wood' },
+    { x: 1500, y: 350, width: 200, height: 20, type: 'wood' },
+    { x: 1800, y: 300, width: 200, height: 20, type: 'wood' },
+  ],
+  items: [
+    {
+      x: 280,
+      y: 420,
+      type: 'document',
+      name: 'Concessão de Sesmaria',
+      description: 'Documento que concedia terras a Inácio Lopes de Magalhães.',
+      points: 20,
+      collected: false,
+      popup: {
+        title: '📜 DOCUMENTO HISTÓRICO ENCONTRADO!',
+        subtitle: 'Concessão de Sesmaria – 1830',
+        educationalText: 'Este documento representa o início da ocupação formal da região. Inácio Lopes de Magalhães recebeu a sesmaria como direito de uso da terra para criação de gado.',
+        historicalContext: 'As sesmarias eram a forma oficial de distribuir terras no Brasil colonial e imperial. Essa concessão foi fundamental para a fundação da Fazenda Boa Vista.',
+        trivia: 'A palavra "sesmaria" vem do termo "seis marias", que significava divisão de terras em lotes.',
+        buttonLabel: 'Fechar'
+      }
+    },
+    {
+      x: 700,
+      y: 370,
+      type: 'artifact',
+      name: 'Marca de Ferrão',
+      description: 'Símbolo utilizado para marcar o gado da fazenda.',
+      points: 15,
+      collected: false,
+      popup: {
+        title: '🐄 OBJETO PECUÁRIO HISTÓRICO!',
+        subtitle: 'Marca de Ferrão – Início do Século XIX',
+        educationalText: 'A criação de gado era a principal atividade econômica da Fazenda Boa Vista. As marcas de ferrão identificavam os animais de cada fazenda.',
+        historicalContext: 'Essas marcas eram registradas oficialmente e eram uma forma de garantir a posse sobre os animais em tempos sem cercas.',
+        trivia: 'A marca da fazenda de Inácio tinha formato de cruz estilizada.',
+        buttonLabel: 'Fechar'
+      }
+    },
+    {
+      x: 1100,
+      y: 350,
+      type: 'tool',
+      name: 'Machado de Madeira',
+      description: 'Usado para abrir caminhos e construir moradias.',
+      points: 10,
+      collected: false,
+      popup: {
+        title: '🪓 FERRAMENTA DO COLONO!',
+        subtitle: 'Machado – Ferramenta de Sobrevivência',
+        educationalText: 'Ferramentas como este machado eram essenciais para abrir trilhas na mata, cortar lenha e construir estruturas simples de madeira.',
+        historicalContext: 'A instalação da fazenda exigia muito trabalho braçal e resistência. A sobrevivência dependia da adaptação ao ambiente.',
+        trivia: 'Os primeiros casebres eram feitos de palha, barro e madeira das margens do Rio Branco.',
+        buttonLabel: 'Fechar'
+      }
+    },
+    {
+      x: 1450,
+      y: 300,
+      type: 'artifact',
+      name: 'Lamparina a Óleo',
+      description: 'Usada para iluminar a fazenda antes da energia elétrica.',
+      points: 10,
+      collected: false,
+      popup: {
+        title: '💡 OBJETO DE ILUMINAÇÃO COLONIAL',
+        subtitle: 'Lamparina – Século XIX',
+        educationalText: 'As noites eram iluminadas com lamparinas alimentadas por óleo de mamona ou gordura animal.',
+        historicalContext: 'Boa Vista só recebeu energia elétrica cerca de um século depois da fundação da fazenda. A lamparina era símbolo de resistência e adaptação.',
+        trivia: 'Mesmo após a chegada da luz elétrica, muitas famílias ainda usavam lamparinas na zona rural.',
+        buttonLabel: 'Fechar'
+      }
+    },
+    {
+      x: 1750,
+      y: 270,
+      type: 'person',
+      name: 'Retrato de Inácio',
+      description: 'Representação artística do fundador da Fazenda Boa Vista.',
+      points: 25,
+      collected: false,
+      popup: {
+        title: '👤 PERSONAGEM HISTÓRICO DESBLOQUEADO!',
+        subtitle: 'Inácio Lopes de Magalhães',
+        educationalText: 'Inácio foi o responsável pela fundação da fazenda que daria origem à cidade. Sua iniciativa e trabalho ajudaram a consolidar a ocupação da margem direita do Rio Branco.',
+        historicalContext: 'A criação de gado e a instalação de um núcleo produtivo rural foram os primeiros passos para o surgimento de Boa Vista.',
+        trivia: 'A cidade só começou a se organizar como vila em 1890, quase 60 anos depois da chegada de Inácio.',
+        buttonLabel: 'Fechar'
+      }
+    }
+  ],
+  enemies: [
+    { x: 500, y: 500, type: 'spirit', name: 'Espírito da Floresta', health: 1, damage: 1, movePattern: 'patrol' },
+    { x: 1000, y: 500, type: 'spirit', name: 'Espírito da Floresta', health: 1, damage: 1, movePattern: 'patrol' },
+    { x: 1600, y: 500, type: 'spirit', name: 'Espírito da Floresta', health: 1, damage: 1, movePattern: 'patrol' },
+  ]
+ },
   VILA_1900: {
     id: 'vila_1900',
     name: 'Vila de Boa Vista (1900)',
